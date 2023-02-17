@@ -3,6 +3,9 @@ import { useNavigate, Link } from "react-router-dom";
 const NavBar = () => {
   const navigate = useNavigate();
 
+  /**
+   * [Let us to sign out of the repository and clean the session data stored in the localStorage]
+   */
   const logOut = () => {
     localStorage.removeItem("userLogged");
     localStorage.removeItem("favoritiesList");

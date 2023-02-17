@@ -1,9 +1,12 @@
 import React, { useState } from "react";
 
-const Cart = ({ repository, pageInfo }) => {
+const Cart = ({ repository }) => {
   const url = repository.url;
   const [attribute, setAttribute] = useState(false);
 
+  /**
+   * [This function save a list of your favorite repositories in localStorage]
+   */
   const handleFavorite = () => {
     attribute ? setAttribute(false) : setAttribute(true);
 
@@ -13,7 +16,6 @@ const Cart = ({ repository, pageInfo }) => {
       repository.isFavorite = !repository.isFavorite;
     }
 
-    console.log(localStorage.getItem("favoritiesList") || "[]");
     const favorites = JSON.parse(
       localStorage.getItem("favoritiesList") || "[]"
     );
@@ -21,7 +23,6 @@ const Cart = ({ repository, pageInfo }) => {
       favorites.push(repository);
       localStorage.setItem("favoritiesList", JSON.stringify(favorites));
     } else {
-      console.log(favorites);
       localStorage.setItem(
         "favoritiesList",
         JSON.stringify(

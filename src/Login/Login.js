@@ -7,6 +7,11 @@ const Login = () => {
     password: "",
   });
 
+  /**
+   * [Function to format data from login input]
+   * @param  {[event]} e [Gets the event with the input data]
+   * @return {[Object]} [The object with the needed format]
+   */
   const getData = (e) => {
     const { value, name } = e.target;
 
@@ -18,12 +23,19 @@ const Login = () => {
     });
   };
 
+  /**
+   * [This function redirects you to the github oAuth login]
+   */
   function loginWithGithub() {
     window.location.assign(
       `https://github.com/login/oauth/authorize?client_id=${process.env.React_App_client_id}`
     );
   }
 
+  /**
+   * [Function to get current credentials and validate if there is an user stored with those credentials]
+   * @param  {[event]} e [Gets the event with the input data]
+   */
   const submit = (e) => {
     e.preventDefault();
 

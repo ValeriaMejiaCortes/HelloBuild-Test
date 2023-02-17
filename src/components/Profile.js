@@ -29,7 +29,6 @@ const Profile = () => {
     })
       .then((response) => response.json())
       .then((data) => {
-        console.log(data.data.viewer.avatarUrl);
         setUser(data.data.viewer);
       });
   }, []);
@@ -66,12 +65,14 @@ const Profile = () => {
                       <p className="mb-4 text-lg leading-relaxed text-blueGray-700">
                         {user.bio}
                       </p>
-                      <a
-                        href={user.url}
-                        className="font-normal text-emerald-700 "
+                      <button
+                        type="submit"
+                        className="w-full text-white bg-gradient-to-r from-teal-500 via-emerald-500 to-green-500 ... ... hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-md px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
                       >
-                        Show more
-                      </a>
+                        <a href={user.url} className="font-bold">
+                          Show more
+                        </a>
+                      </button>
                     </div>
                   </div>
                 </div>

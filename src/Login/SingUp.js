@@ -10,6 +10,11 @@ const SingUp = () => {
     password: "",
   });
 
+  /**
+   * [Function to format data from login input]
+   * @param  {[event]} e [Gets the event with the input data]
+   * @return {[Object]} [The object with the needed format]
+   */
   const getData = (e) => {
     const { value, name } = e.target;
 
@@ -21,6 +26,10 @@ const SingUp = () => {
     });
   };
 
+  /**
+   * [Function to get current credentials and store a new user in localStorage with those credentials]
+   * @param  {[event]} e [Gets the event with the input data]
+   */
   const submit = (e) => {
     e.preventDefault();
 
