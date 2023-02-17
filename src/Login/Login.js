@@ -1,9 +1,7 @@
 import React, { useState } from "react";
-import { NavLink, useNavigate } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 const Login = () => {
-  const navigate = useNavigate();
-
   const [prevData, setPrevData] = useState({
     email: "",
     password: "",
@@ -19,6 +17,12 @@ const Login = () => {
       };
     });
   };
+
+  function loginWithGithub() {
+    window.location.assign(
+      `https://github.com/login/oauth/authorize?client_id=${process.env.React_App_client_id}`
+    );
+  }
 
   const submit = (e) => {
     e.preventDefault();
@@ -41,15 +45,15 @@ const Login = () => {
           alert("invalid credentials");
         } else {
           alert("Login succesfully");
-          localStorage.setItem("userLoged", JSON.stringify([userLogin]));
-          navigate(`/home`, { replace: true });
+          localStorage.setItem("userLogged", JSON.stringify([userLogin]));
+          loginWithGithub();
         }
       }
     }
   };
 
   return (
-    <>
+    <div>
       <section className="bg-gray-50 dark:bg-gray-900">
         <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
           <div className="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700">
@@ -94,21 +98,23 @@ const Login = () => {
                 </div>
                 <button
                   type="submit"
-                  className="w-full text-white bg-gradient-to-r from-indigo-400 via-purple-400 to-pink-400 ... hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-md px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
+                  className="w-full text-white bg-gradient-to-r from-teal-500 via-emerald-500 to-green-500 ... ... hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-md px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
                   onClick={submit}
                 >
                   Log In
                 </button>
                 <p className="text-sm font-light text-gray-500 dark:text-gray-400">
                   Do you want to create other account?{" "}
-                  <NavLink to={"/"}>click here</NavLink>
+                  <NavLink className="font-bold" to={"/"}>
+                    click here
+                  </NavLink>
                 </p>
               </form>
             </div>
           </div>
         </div>
       </section>
-    </>
+    </div>
   );
 };
 
